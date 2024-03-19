@@ -6,13 +6,19 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MoviesService {
 
-  private url = 'http://localhost:8080/movies/all';
+  private urlAllMovies = 'http://localhost:8080/movies/all';
+
+  private urlAddMovies = 'http://localhost:8080/movies/add';
 
   constructor(private httpClient: HttpClient) { }
 
   getMovies(){
 
-    return this.httpClient.get(this.url);
+    return this.httpClient.get(this.urlAllMovies);
 
+  }
+
+  addMovies(data: any){
+      return this.httpClient.post(this.urlAddMovies,data);
   }
 }

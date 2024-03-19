@@ -1,0 +1,21 @@
+<p>movies-add works!</p>
+
+    <div class="example-container">
+        <mat-form-field>
+            <mat-label>NAME</mat-label>
+            
+            <input matInput name="name" [(ngModel)]="movie.name" >
+        </mat-form-field>    
+    </div>
+    
+    <div class="example-container">
+        <mat-form-field>
+            <mat-label>URL:</mat-label>
+            <input matInput name="url" [(ngModel)]="movie.url">
+        </mat-form-field>
+    </div>
+    
+    <button mat-flat-button color="primary" (click)="funSave()">
+        Save
+    </button>
+    
