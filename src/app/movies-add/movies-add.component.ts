@@ -27,7 +27,7 @@ constructor(private service:MoviesService){}
 
 addMovies(){
 
-    this.service.addMovies(this.movie)
+    this.service.addMovie(this.movie)
     .subscribe(
       response => {
         console.log('Post created successfully:', response);

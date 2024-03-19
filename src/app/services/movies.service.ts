@@ -6,19 +6,23 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MoviesService {
 
-  private urlAllMovies = 'http://localhost:8080/movies/all';
-
-  private urlAddMovies = 'http://localhost:8080/movies/add';
+  private urlMovies = 'http://localhost:8080';
 
   constructor(private httpClient: HttpClient) { }
 
-  getMovies(){
+  public getMovies(){
 
-    return this.httpClient.get(this.urlAllMovies);
+    return this.httpClient.get(this.urlMovies+"/movies/all");
 
   }
 
-  addMovies(data: any){
-      return this.httpClient.post(this.urlAddMovies,data);
+  public addMovie(data: any){
+      return this.httpClient.post(this.urlMovies+"/movies/add",data);
   }
+
+  public removeMovie(idMovie: number){
+    return this.httpClient.delete(this.urlMovies+"/movies/delete"+"?id="+idMovie);
+}
+
+  
 }

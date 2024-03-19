@@ -18,11 +18,14 @@ export interface PeriodicElement {
   styleUrl: './movies-list.component.sass'
 })
 export default class MoviesListComponent {
-  displayedColumns: string[] = ['id', 'name', 'url'];
+  displayedColumns: string[] = ['id', 'name','action'];
 
   movies:any;
 
+  public idMovieToDelete:number = 0;
+
   constructor(private service:MoviesService) {}
+  
   ngOnInit() {
 
     this.service.getMovies()
@@ -34,4 +37,25 @@ export default class MoviesListComponent {
       });
 
   }
+  deleteMyMovie(){
+    this.service.removeMovie(this.idMovieToDelete)
+    .subscribe(
+      response => {
+        console.log('Movie deleted successfully:', response);
+      },
+      error => {
+        console.error('Error creating post:', error);
+      }
+    );
+
+}
+
+
+  public deleteMovie(idMovie:number){
+        this.idMovieToDelete = idMovie;
+        console.log(idMovie+": selected to delete");
+        this.deleteMyMovie();
+  }
+
+
 }
